@@ -23,6 +23,7 @@ class BlogPost(models.Model):
     content = models.CharField(max_length=1000, blank=False, unique=False)
     date_created = models.DateTimeField(auto_now_add=True)
     author = models.CharField(max_length=25, blank=True, unique=False)
+    disorder = models.ForeignKey(Disorder, on_delete=models.CASCADE)
 
     def __str__(self):
         return "{}".format(self.title)
