@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import DisorderSerializer, StorySerializer, BlogPostSerializer
-from .models import Disorder, Story, BlogPost
+from .serializers import DisorderSerializer, StorySerializer, BlogPostSerializer, LocalResourceSerializer
+from .models import Disorder, Story, BlogPost, LocalResource
 
 class CreateView(generics.ListCreateAPIView):
     queryset = Disorder.objects.all()
@@ -32,13 +32,18 @@ class BlogPostCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save()
 
-class BlogPostDetailsView(generics.ListAPIView):
+class BlogPostDetailsView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
 
-    def get_queryset(self):
-        queryset = BlogPost.objects.all()
-        disorderId = self.request.query_params.get('disorder', None)
-        if disorderId is not None:
-            queryset = queryset.filter(blogpost__disorder=disorderId)
-        return queryset
+class LocalResourceCreateView(generics.ListCreateAPIView):
+    queryset=LocalResource.objects.all()
+    serializer_class = LocalResourceSerializer
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+class LocalResourceDetailsView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = LocalResource.objects.all()
+    serializer_class = LocalResourceSerializer
 

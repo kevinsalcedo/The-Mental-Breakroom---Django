@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Disorder, Story, BlogPost
+from .models import Disorder, Story, BlogPost, LocalResource
 
 class DisorderSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,8 @@ class BlogPostSerializer(serializers.ModelSerializer):
         model = BlogPost
         fields = ('id', 'title', 'content', 'date_created', 'author', 'disorder')
         read_only_fields = ('date_created',)
+
+class LocalResourceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LocalResource
+        fields = ('id','name','img_url','url','address','phone','description','disorder')
