@@ -32,7 +32,13 @@ class BlogPostCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save()
 
-class BlogPostDetailsView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = BlogPost.objects.all()
+class BlogPostDetailsView(generics.ListAPIView):
     serializer_class = BlogPostSerializer
+
+    def get_queryset(self):
+        queryset = BlogPost.objects.all()
+        disorderId = self.request.query_params.get('disorder', None)
+        if disorderId is not None:
+            queryset = queryset.filter(blogpost__disorder=disorderId)
+        return queryset
 

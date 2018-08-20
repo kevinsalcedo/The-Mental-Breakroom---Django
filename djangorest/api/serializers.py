@@ -15,5 +15,5 @@ class StorySerializer(serializers.ModelSerializer):
 class BlogPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogPost
-        fields = ('d', 'title', 'content', 'date_created', 'author', 'disorder')
-        read_only_fields = ('date_created')
+        fields = ('id', 'title', 'content', 'date_created', 'author', 'disorder')
+        read_only_fields = ('date_created',)

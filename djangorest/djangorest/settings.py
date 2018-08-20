@@ -25,7 +25,10 @@ SECRET_KEY = 'qjrxt8q$y+d_wcyzx!1=@o6dbjli5^(fo42ss24)*=b7ybjb2$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mbdb-env.bwzm9cseur.us-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = [
+        'mbdb-env.bwzm9cseur.us-east-1.elasticbeanstalk.com',
+        '127.0.0.1',
+        'localhost']
 
 
 # Application definition
