@@ -28,7 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
         'mbdb-env.bwzm9cseur.us-east-1.elasticbeanstalk.com',
         '127.0.0.1',
-        'localhost']
+        'localhost',
+        'thementalbreakroom.com',
+        'www.thementalbreakroom.com']
 
 
 # Application definition
